@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 
+import Title from "./components/Title/Title";
+
 class App extends React.Component {
 	state = {
 		score: null
@@ -28,9 +30,10 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<header>
-					<div>Title</div> <div>Choices</div>
-					<div>Rules</div>
+					<Title score={this.state.score} />
 				</header>
+				<div>Choices</div>
+				<div>Rules</div>
 			</div>
 		);
 	}

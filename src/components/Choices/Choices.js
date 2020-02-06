@@ -39,10 +39,12 @@ class Choices extends React.Component {
 	handleChoice = playerChoice => {
 		if (clickEnabled) {
 			clickEnabled = false;
+			const houseChoice = this.makeHouseChoice();
 			this.centerChoices(playerChoice);
+			console.log(houseChoice);
+			this.props.increaseScore();
 			setTimeout(() => {
-				this.props.increaseScore();
-				clickEnabled = true;
+				this.resetChoices();
 			}, 2000);
 		}
 	};
@@ -59,6 +61,29 @@ class Choices extends React.Component {
 			choices,
 			triangleVisibility: false
 		});
+	};
+
+	makeHouseChoice = () => {
+		const choices = Object.keys(this.state.choices);
+		const choice = choices[Math.floor(Math.random() * choices.length)];
+		return choice;
+	};
+
+	resetChoices = () => {
+		const choices = { ...this.state.choices };
+		for (let choice in choices) {
+			choices[choice].visibility = true;
+			choices[choice].position = choice;
+		}
+		this.setState({
+			choices
+		});
+		setTimeout(() => {
+			this.setState({
+				triangleVisibility: true
+			});
+			clickEnabled = true;
+		}, 300);
 	};
 
 	render() {

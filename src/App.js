@@ -3,6 +3,7 @@ import "./App.css";
 
 import Title from "./components/Title/Title";
 import Rules from "./components/Rules/Rules";
+import Choices from "./components/Choices/Choices";
 
 class App extends React.Component {
 	state = {
@@ -33,11 +34,13 @@ class App extends React.Component {
 				<header>
 					<Title score={this.state.score} />
 				</header>
-				<div>Choices</div>
-				<Rules
-					modalVisible={this.state.rulesModalVisibile}
-					setModalVisibility={this.setRulesModalVisibility}
-				/>
+				<main>
+					<Choices increaseScore={this.increaseScore} />
+					<Rules
+						modalVisible={this.state.rulesModalVisibile}
+						setModalVisibility={this.setRulesModalVisibility}
+					/>
+				</main>
 			</div>
 		);
 	}

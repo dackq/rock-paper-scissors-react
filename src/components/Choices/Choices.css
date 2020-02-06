@@ -1,0 +1,7 @@
+.Choices {
+	position: relative;
+	width: 100%;
+	max-width: 20rem;
+	margin: 8vh auto 0 auto;
+	overflow: hidden;
+}

@@ -2,6 +2,11 @@
 	width: 100%;
 }
 
+.Triangle_hidden {
+	opacity: 0;
+	overflow: hidden;
+}
+
 .Triangle::before {
 	content: "";
 	float: left;

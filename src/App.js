@@ -2,16 +2,13 @@ import React from "react";
 import "./App.css";
 
 import Title from "./components/Title/Title";
+import Rules from "./components/Rules/Rules";
 
 class App extends React.Component {
 	state = {
-		score: null
+		score: 0,
+		rulesModalVisibility: "Rules_hidden"
 	};
-
-	constructor(props) {
-		super(props);
-		this.state.score = 0;
-	}
 
 	resetScore() {
 		this.setState({
@@ -33,7 +30,7 @@ class App extends React.Component {
 					<Title score={this.state.score} />
 				</header>
 				<div>Choices</div>
-				<div>Rules</div>
+				<Rules modalVisibility={this.state.rulesModalVisibility} />
 			</div>
 		);
 	}

@@ -1,0 +1,83 @@
+.Rules {
+	position: absolute;
+	color: hsl(229, 25%, 31%);
+	background-color: white;
+	overflow: hidden;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	transition: opacity, height 0.5s, 0.5s;
+	text-align: center;
+	z-index: 20;
+}
+
+.Rules__content {
+	height: 85%;
+}
+
+.Rules_hidden {
+	height: 0;
+	opacity: 0;
+}
+
+.Rules__button {
+	display: block;
+	padding: 0.65rem 2.2rem;
+	margin: 0.5rem auto;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.Rules__open {
+	color: white;
+	border: 1px solid white;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-weight: 200;
+	letter-spacing: 1.5px;
+}
+
+.Rules__button:focus {
+	outline: none;
+}
+.Rules__close {
+	border: none;
+}
+
+.Rules__image {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 1024px) {
+	.Rules__open {
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+	}
+	.Rules__close {
+		position: absolute;
+		top: 0.5rem;
+		right: 0;
+	}
+	.Rules {
+		width: 25rem;
+		height: 25rem;
+		position: absolute;
+		text-align: left;
+		bottom: 50%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		border-radius: 5px;
+	}
+	.Rules__title {
+		margin: 1rem 2.5rem;
+		font-size: 2rem;
+	}
+	.Rules__image {
+		top: 60%;
+	}
+}

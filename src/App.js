@@ -11,6 +11,19 @@ class App extends React.Component {
 		this.state.score = 0;
 	}
 
+	resetScore() {
+		this.setState({
+			score: 0
+		});
+	}
+
+	increaseScore() {
+		let score = this.state.score + 1;
+		this.setState({
+			score
+		});
+	}
+
 	render() {
 		return (
 			<div className="App">

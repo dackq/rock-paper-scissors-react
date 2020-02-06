@@ -7,21 +7,25 @@ import Rules from "./components/Rules/Rules";
 class App extends React.Component {
 	state = {
 		score: 0,
-		rulesModalVisibility: "Rules_hidden"
+		rulesModalVisibile: false
 	};
 
-	resetScore() {
+	resetScore = () => {
 		this.setState({
 			score: 0
 		});
-	}
+	};
 
-	increaseScore() {
+	increaseScore = () => {
 		let score = this.state.score + 1;
 		this.setState({
 			score
 		});
-	}
+	};
+
+	setRulesModalVisibility = isModalVisible => {
+		this.setState({ rulesModalVisibile: isModalVisible });
+	};
 
 	render() {
 		return (
@@ -30,7 +34,10 @@ class App extends React.Component {
 					<Title score={this.state.score} />
 				</header>
 				<div>Choices</div>
-				<Rules modalVisibility={this.state.rulesModalVisibility} />
+				<Rules
+					modalVisible={this.state.rulesModalVisibile}
+					setModalVisibility={this.setRulesModalVisibility}
+				/>
 			</div>
 		);
 	}

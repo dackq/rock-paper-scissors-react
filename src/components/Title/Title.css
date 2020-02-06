@@ -1,0 +1,42 @@
+.Title {
+	border: 3px solid;
+	border-color: hsl(217, 16%, 45%);
+	border-radius: 8px;
+	padding: 0.65rem;
+}
+
+.Title__logo {
+	display: inline-block;
+	color: white;
+	width: 50px;
+	margin: 0.75rem 0;
+	margin-left: 0.65rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+	line-height: 1rem;
+}
+
+.Title__score-box {
+	float: right;
+	background-color: white;
+	text-align: center;
+	height: 4.5rem;
+	width: 5rem;
+	padding: 0.7rem;
+	border-radius: 8px;
+}
+
+.Title__score-box-title {
+	color: hsl(229, 64%, 46%);
+	margin: 0;
+	font-size: 0.6rem;
+	font-weight: 600;
+	letter-spacing: 1.5px;
+}
+
+.Title__score-box-number {
+	margin: 0;
+	font-size: 2.35rem;
+	font-weight: 600;
+	color: hsl(229, 25%, 31%);
+}

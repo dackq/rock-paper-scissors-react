@@ -5,15 +5,25 @@ import "./ChoiceButton.css";
 const ChoiceButton = props => {
 	return (
 		<div
-			className={"ChoiceButton ChoiceButton_" + props.type + "-position"}
+			className={
+				"ChoiceButton ChoiceButton_" +
+				props.configuration.position +
+				"-position"
+			}
+			onClick={() => props.clickHandler(props.configuration.type)}
 		>
 			<div
 				className={
-					"ChoiceButton__border ChoiceButton__border_" + props.type
+					"ChoiceButton__border ChoiceButton__border_" +
+					props.configuration.type
 				}
 			>
-				<div className={"ChoiceButton__center"}>
-					<div className="ChoiceButton__icon">{props.children}</div>
+				<div className={"ChoiceButton__middle"}>
+					<img
+						src={props.configuration.icon}
+						alt={props.configuration.type}
+						className="ChoiceButton__icon"
+					/>
 				</div>
 			</div>
 		</div>

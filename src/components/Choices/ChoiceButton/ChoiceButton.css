@@ -1,8 +1,9 @@
 .ChoiceButton {
 	z-index: 10;
 	cursor: pointer;
+	transition: 0.5s;
 }
-.ChoiceButton__center {
+.ChoiceButton__middle {
 	transition: 0.5s;
 	display: inline-block;
 	position: absolute;
@@ -52,10 +53,16 @@
 	transform: translate(-50%, -100%);
 }
 
-.ChoiceButton_paper-position {
+.ChoiceButton_paper-position,
+.ChoiceButton_center-position,
+.ChoiceButton_focus-position {
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+.ChoiceButton_focus-position {
+	z-index: 15;
 }
 
 .ChoiceButton__icon {

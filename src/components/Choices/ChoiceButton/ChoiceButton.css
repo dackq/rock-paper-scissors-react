@@ -2,8 +2,14 @@
 	z-index: 10;
 	cursor: pointer;
 	transition: 0.5s;
+	overflow: hidden;
 }
-.ChoiceButton__middle {
+
+.ChoiceButton_hidden {
+	opacity: 0;
+}
+
+.ChoiceButton__middle-circle {
 	transition: 0.5s;
 	display: inline-block;
 	position: absolute;
@@ -39,22 +45,21 @@
 	border-color: #2945c4;
 	background: linear-gradient(hsl(230, 89%, 65%), hsl(230, 89%, 62%));
 }
-.ChoiceButton_scissors-position {
+.ChoiceButton_right-position {
 	position: absolute;
 	top: 0;
 	left: 100%;
 	transform: translateX(-100%);
 }
 
-.ChoiceButton_rock-position {
+.ChoiceButton_bottom-position {
 	position: absolute;
 	top: 100%;
 	left: 50%;
 	transform: translate(-50%, -100%);
 }
 
-.ChoiceButton_paper-position,
-.ChoiceButton_center-position,
+.ChoiceButton_left-position,
 .ChoiceButton_focus-position {
 	position: absolute;
 	top: 0;

@@ -3,12 +3,14 @@ import React from "react";
 import "./ChoiceButton.css";
 
 const ChoiceButton = props => {
+	const hidden = props.configuration.visibility ? "" : "ChoiceButton_hidden";
 	return (
 		<div
 			className={
 				"ChoiceButton ChoiceButton_" +
 				props.configuration.position +
-				"-position"
+				"-position " +
+				hidden
 			}
 			onClick={() => props.clickHandler(props.configuration.type)}
 		>
@@ -18,7 +20,7 @@ const ChoiceButton = props => {
 					props.configuration.type
 				}
 			>
-				<div className={"ChoiceButton__middle"}>
+				<div className={"ChoiceButton__middle-circle"}>
 					<img
 						src={props.configuration.icon}
 						alt={props.configuration.type}

@@ -5,3 +5,24 @@
 	margin: 8vh auto 0 auto;
 	overflow: hidden;
 }
+
+.house__placeholder {
+	width: 8.125rem;
+	height: 8.125rem;
+	z-index: 0;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.house__placeholder-inner-circle {
+	width: 6.25rem;
+	height: 6.25rem;
+	z-index: 0;
+	background-color: #16243e;
+	border-radius: 50%;
+	position: absolute;
+	top: 0.9375rem;
+	right: 0.9375rem;
+}

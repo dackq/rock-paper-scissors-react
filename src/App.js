@@ -40,6 +40,16 @@ class App extends React.Component {
 						modalVisible={this.state.rulesModalVisibile}
 						setModalVisibility={this.setRulesModalVisibility}
 					/>
+					<button
+						className="Rules__button Rules__open"
+						onClick={() =>
+							this.setRulesModalVisibility(
+								!this.state.rulesModalVisibile
+							)
+						}
+					>
+						RULES
+					</button>
 				</main>
 			</div>
 		);

@@ -2,6 +2,8 @@ import React from "react";
 
 import ChoiceButton from "./ChoiceButton/ChoiceButton";
 import TriangleBackdrop from "./TriangleBackdrop/TriangleBackdrop";
+import Outcome from "../Outcome/Outcome";
+import Labels from "./Labels/Labels";
 
 import scissors from "../../images/icon-scissors.svg";
 import paper from "../../images/icon-paper.svg";
@@ -39,6 +41,9 @@ class Choices extends React.Component {
 			visibility: false,
 			icon: null
 		},
+		gameResult: "NULL",
+		labelVisibility: false,
+		outcomeVisibility: false,
 		triangleVisibility: true
 	};
 
@@ -55,9 +60,12 @@ class Choices extends React.Component {
 			setTimeout(() => {
 				this.revealHouseChoice(houseChoice);
 				setTimeout(() => {
-					this.resetChoices();
-				}, 1000);
-			}, 2000);
+					this.judgeWinner(houseChoice, playerChoice);
+					this.setState({
+						outcomeVisibility: true
+					});
+				}, 500);
+			}, 1500);
 		}
 	};
 
@@ -76,7 +84,8 @@ class Choices extends React.Component {
 		choices[playerChoice].position = "focus";
 		this.setState({
 			choices,
-			triangleVisibility: false
+			triangleVisibility: false,
+			labelVisibility: true
 		});
 	};
 
@@ -93,6 +102,8 @@ class Choices extends React.Component {
 
 	/**
 	 * Reveals the house's choice.
+	 *
+	 * @param {string} houseChoice The house's choice.
 	 */
 	revealHouseChoice = houseChoice => {
 		const icon = this.state.choices[houseChoice].icon;
@@ -106,23 +117,61 @@ class Choices extends React.Component {
 		});
 	};
 
-	resetChoices = () => {
-		const choices = { ...this.state.choices };
-		const basePositions = {
-			paper: "left",
-			scissors: "right",
-			rock: "bottom"
+	/**
+	 * Judges the winner and returns the outcome.
+	 */
+	judgeWinner(houseChoice, playerChoice) {
+		const values = {
+			paper: 0,
+			scissors: 1,
+			rock: 2
 		};
-		for (let choice in choices) {
-			choices[choice].visibility = true;
-			choices[choice].position = basePositions[choice];
+
+		const difference = values[playerChoice] - values[houseChoice];
+
+		let outcome = "";
+
+		if ((difference > 0 && difference !== 2) || difference === -2) {
+			this.props.increaseScore();
+			outcome = "YOU WIN";
+		} else if (difference === 0) {
+			outcome = "DRAW";
+		} else {
+			outcome = "YOU LOSE";
 		}
-		const houseChoice = { ...this.state.houseChoice };
-		houseChoice.visibility = false;
 
 		this.setState({
-			choices,
-			houseChoice
+			gameResult: outcome
+		});
+	}
+
+	resetChoices = () => {
+		const houseChoice = { ...this.state.houseChoice };
+		houseChoice.visibility = false;
+		this.setState({
+			choices: {
+				paper: {
+					type: "paper",
+					position: "left",
+					visibility: true,
+					icon: paper
+				},
+				scissors: {
+					type: "scissors",
+					position: "right",
+					visibility: true,
+					icon: scissors
+				},
+				rock: {
+					type: "rock",
+					position: "bottom",
+					visibility: true,
+					icon: rock
+				}
+			},
+			houseChoice,
+			labelVisibility: false,
+			outcomeVisibility: false
 		});
 		setTimeout(() => {
 			this.setState({
@@ -144,15 +193,22 @@ class Choices extends React.Component {
 		});
 
 		return (
-			<div className="Choices">
-				{choices}
-				<div className="house__placeholder">
-					<div className="house__placeholder-inner-circle"></div>
-					<ChoiceButton configuration={this.state.houseChoice} />
+			<React.Fragment>
+				<div className="Choices">
+					{choices}
+					<div className="house__placeholder">
+						<div className="house__placeholder-inner-circle"></div>
+						<ChoiceButton configuration={this.state.houseChoice} />
+					</div>
+					<TriangleBackdrop visible={this.state.triangleVisibility} />
+					<Labels labelVisibility={this.state.labelVisibility} />
 				</div>
-				<TriangleBackdrop visible={this.state.triangleVisibility} />
-				<div>outcome</div>
-			</div>
+				<Outcome
+					reset={this.resetChoices}
+					visibility={this.state.outcomeVisibility}
+					outcome={this.state.gameResult}
+				/>
+			</React.Fragment>
 		);
 	}
 }

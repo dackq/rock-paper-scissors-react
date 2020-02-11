@@ -1,0 +1,19 @@
+.label {
+	color: white;
+	font-size: 1.1rem;
+	position: absolute;
+	top: 9rem;
+}
+.label_house {
+	right: 0;
+}
+.label_player {
+	left: 1.5rem;
+}
+.label__label-block {
+	transition: 0.3s;
+}
+.label__label-block_hide {
+	opacity: 0;
+	visibility: hidden;
+}

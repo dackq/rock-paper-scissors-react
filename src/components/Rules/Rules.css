@@ -19,6 +19,7 @@
 .Rules_hidden {
 	height: 0;
 	opacity: 0;
+	visibility: hidden;
 }
 
 .Rules__button {

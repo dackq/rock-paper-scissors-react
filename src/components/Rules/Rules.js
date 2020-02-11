@@ -27,12 +27,6 @@ const Rules = props => {
 					<img src={closeIcon} alt="X" />
 				</button>
 			</div>
-			<button
-				className="Rules__button Rules__open"
-				onClick={() => props.setModalVisibility(true)}
-			>
-				RULES
-			</button>
 		</React.Fragment>
 	);
 };

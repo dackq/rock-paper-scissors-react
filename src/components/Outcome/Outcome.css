@@ -1,0 +1,31 @@
+.Outcome {
+	margin-top: -5rem;
+	height: 10rem;
+	transition: 0.5s;
+}
+.Outcome__label {
+	text-align: center;
+	color: white;
+	font-size: 3.4rem;
+	margin: 0;
+}
+.Outcome__button {
+	display: block;
+	margin: 1.1rem auto;
+	padding: 1rem 3rem;
+	background-color: white;
+	border: none;
+	border-radius: 8px;
+	color: #16243e;
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+.Outcome_hidden {
+	opacity: 0;
+}
+@media screen and (min-height: 700px) {
+	.Outcome {
+		margin-top: -1.5rem;
+	}
+}
